@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AshAnime</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/index.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <a href="index.html" id="logo">
+            <img src="Images/logo.png" alt="AshAnime">
+        </a>
+    </header>
+
+    <main>
+        <aside id="sidebar">
+
+            <section id="search-section">
+                <h2>Search Anime</h2>
+
+                <form id="search-form">
+                    <input
+                        type="search"
+                        id="anime-search"
+                        placeholder="Search anime..."
+                    >
+                    <button type="submit" aria-label="Search">⌕</button>
+                </form>
+
+                <div id="search-results"></div>
+            </section>
+
+            <section id="anime-details">
+                <div id="anime-poster"></div>
+
+                <div id="anime-info">
+                    <h3 id="anime-title">Select an Anime</h3>
+                    <p id="anime-description">
+                        Anime details will appear here.
+                    </p>
+                </div>
+            </section>
+
+            <section id="stream-controls">
+                <form id="stream-form">
+
+                    <div class="field-group">
+                        <label for="anime-index">Anime ID</label>
+                        <input
+                            type="text"
+                            id="anime-index"
+                            placeholder="Enter index code"
+                            required
+                        >
+                    </div>
+
+                    <div class="playback-fields">
+
+                        <div class="field-group episode-field">
+                            <label for="episode-number">Episode</label>
+                            <input
+                                type="number"
+                                id="episode-number"
+                                min="1"
+                                step="1"
+                                value="1"
+                                required
+                            >
+                        </div>
+
+                        <fieldset class="field-group track-field">
+                            <legend>Track</legend>
+
+                            <div id="audio-type">
+                                <label class="track-option">
+                                    <input
+                                        type="radio"
+                                        name="audio"
+                                        value="sub"
+                                        checked
+                                    >
+                                    <span>SUB</span>
+                                </label>
+
+                                <label class="track-option">
+                                    <input
+                                        type="radio"
+                                        name="audio"
+                                        value="dub"
+                                    >
+                                    <span>DUB</span>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                    </div>
+
+                    <button type="submit" id="play-button">
+                        Play
+                    </button>
+
+                </form>
+            </section>
+
+        </aside>
+
+        <section id="player-section">
+
+            <div id="video-container">
+                <!-- Video player will go here -->
+            </div>
+
+            <div id="episode-controls">
+                <button type="button" id="previous-episode">
+                    Previous Episode
+                </button>
+
+                <h2 id="current-episode">
+                    Anime Name - Episode 1
+                </h2>
+
+                <button type="button" id="next-episode">
+                    Next Episode
+                </button>
+            </div>
+
+        </section>
+    </main>
+
+    <footer>
+        <div id="credits">
+            <p>AshAnime</p>
+            <p>Your personal anime streaming space.</p>
+        </div>
+        
+        <div class="credit">
+            <p id="footer">AshAnime V1.0</p>
+            <p id="footer">Made by Saibiru</p>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,508 @@
+
+:root {
+    --bg-main: #000000;
+    --bg-secondary: #0B121A;
+    --bg-input: #05090D;
+    --gold: #F5A623;
+    --gold-bright: #FFD45C;
+    --text-main: #E5E7EB;
+    --text-muted: #84909B;
+    --border: #202A32;
+    --track-active: #00E6B8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-main);
+    color: var(--text-main);
+    font-family: Arial, sans-serif;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* Header */
+
+header {
+    min-height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: var(--bg-main);
+    border-bottom: 1px solid var(--border);
+}
+
+#logo {
+    display: flex;
+    align-items: center;
+    width: 190px;
+    height: 48px;
+}
+
+#logo img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Main layout */
+
+main {
+    display: flex;
+    min-height: calc(100vh - 150px);
+}
+
+/* Sidebar */
+
+#sidebar {
+    width: 340px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border);
+}
+
+#search-section,
+#anime-details,
+#stream-controls {
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+#search-section h2 {
+    margin-bottom: 18px;
+    color: var(--gold-bright);
+}
+
+/* Search */
+
+#search-form {
+    display: flex;
+    /* gap: 8px; */
+}
+
+#search-results:empty {
+    display: none;
+}
+
+#anime-search {
+    flex: 1;
+    min-width: 0;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    color: var(--text-main);
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-radius: 0;
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--gold);
+}
+
+#search-form button {
+    padding: 0 16px;
+    color: var(--gold-bright);
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+}
+
+/* Search results */
+
+#search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* Anime details */
+
+#anime-details {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+}
+
+#anime-poster {
+    width: 110px;
+    min-height: 150px;
+    flex-shrink: 0;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+}
+
+#anime-poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#anime-info {
+    flex: 1;
+    min-width: 0;
+}
+
+#anime-title {
+    margin-bottom: 8px;
+    overflow-wrap: anywhere;
+    color: var(--gold-bright);
+}
+
+#anime-description {
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Seamless anime search dropdown */
+
+#search-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    margin-top: 0;
+    max-height: 280px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+    border-top: 0;
+
+    scrollbar-width: thin;
+    scrollbar-color: var(--gold) var(--bg-secondary);
+}
+
+/* Compact, single-line results */
+
+.anime-result {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    padding: 7px 10px;
+
+    color: var(--text-main);
+    background: transparent;
+
+    border: 0;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.4;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.anime-result:last-child {
+    border-bottom: 0;
+}
+
+.anime-result:hover,
+.anime-result:focus-visible {
+    color: var(--gold-bright);
+    background: var(--bg-secondary);
+    outline: none;
+}
+
+/* Themed scrollbar */
+
+#search-results::-webkit-scrollbar {
+    width: 7px;
+}
+
+#search-results::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+#search-results::-webkit-scrollbar-thumb {
+    background: var(--gold);
+    border: 1px solid var(--bg-secondary);
+}
+
+#search-results::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-bright);
+}
+
+/* Playback form */
+
+#stream-controls {
+    padding: 20px 15px;
+}
+
+#stream-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    min-width: 0;
+    border: 0;
+}
+
+.field-group > label,
+.track-field legend {
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+}
+
+.field-group input {
+    height: 42px;
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+/* Episode and track side by side */
+
+.playback-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 16px;
+}
+
+.episode-field input {
+    width: 100%;
+}
+
+/* Remove number input spinner */
+
+#episode-number {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+
+#episode-number::-webkit-inner-spin-button,
+#episode-number::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Sub / Dub selector */
+
+.track-field {
+    gap: 9px;
+}
+
+.track-field legend {
+    margin-bottom: 9px;
+}
+
+#audio-type {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-height: 42px;
+    background: var(--bg-input);
+    border: 1px solid var(--border);
+}
+
+.track-option {
+    position: relative;
+    display: flex;
+    min-width: 0;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.track-option input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.track-option span {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: bold;
+    border-right: 1px solid var(--border);
+}
+
+.track-option:last-child span {
+    border-right: 0;
+}
+
+.track-option input:checked + span {
+    color: #00130F;
+    background: var(--gold);
+}
+
+.track-option input:focus-visible + span {
+    outline: 2px solid var(--gold-bright);
+    outline-offset: -3px;
+}
+
+/* Play button */
+
+#play-button {
+    min-height: 42px;
+    padding: 10px;
+    color: #17170F;
+    background: var(--gold);
+    border: none;
+    font-weight: bold;
+}
+
+#play-button:hover {
+    background: var(--gold-bright);
+}
+
+/* Player */
+
+#player-section {
+    flex: 1;
+    min-width: 0;
+    padding: 0px 28px;
+}
+
+#video-container {
+    width: 100%;
+    height: 80%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid var(--border);
+}
+
+#video-container video,
+#video-container iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+#current-episode {
+    margin-top: 16px;
+    font-size: 18px;
+    color: var(--gold-bright);
+}
+
+#episode-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+#episode-controls button {
+    padding: 10px 14px;
+    color: var(--text-main);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+}
+
+#episode-controls button:hover {
+    border-color: var(--gold);
+}
+
+/* Footer */
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 20px;
+    background: var(--bg-main);
+    border-top: 1px solid var(--border);
+}
+
+#credits p {
+    margin-top: 5px;
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+#credits p:first-child {
+    color: var(--gold-bright);
+    font-size: 17px;
+    font-weight: bold;
+}
+
+#footer {
+    color: var(--text-muted);
+    font-size: 13px;
+}
+
+/* Responsive */
+
+@media (max-width: 800px) {
+    main {
+        flex-direction: column;
+    }
+
+    #sidebar {
+        width: 100%;
+        border-right: 0;
+    }
+
+    #player-section {
+        padding: 18px;
+    }
+
+    .playback-fields {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .playback-fields {
+        gap: 10px;
+    }
+
+    #stream-controls {
+        padding: 16px 12px;
+    }
+
+    #episode-controls button {
+        padding: 9px;
+        font-size: 12px;
+    }
+}
